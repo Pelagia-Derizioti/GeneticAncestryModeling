@@ -42,11 +42,12 @@ def calculate_ibd_proportion(pop: List[List[Individual]], chrom_lengths: List[in
         print(f"Total IBD Length: {total_ibd_length}")
         print(f"Population Size: {pop_size}")
         print(f"Sequence Length: {seq_len}")
-        print(f"Denominator (pop_size * seq_len): {pop_size * seq_len}")
+        print(f"Denominator (pop_size * seq_len): {(pop_size * (pop_size - 1) // 2) * seq_len}")
 
 
         # Store the IBD proportion for this generation
-        ibd_proportions.append(total_ibd_length / (pop_size * seq_len))
+        #ibd_proportions.append(total_ibd_length / (pop_size * seq_len))
+        ibd_proportions.append(total_ibd_length / ((pop_size * (pop_size - 1) // 2) * seq_len))
 
         prev_gen = curr_gen  # Update for next generation
 
